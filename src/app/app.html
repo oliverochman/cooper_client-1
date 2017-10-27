@@ -16,6 +16,12 @@
       <button ion-item (click)="logout()" *ngIf="currentUser">
         Logout {{currentUser.email}}
       </button>
+      <button ion-item (click)="updatePopUp()" *ngIf="currentUser">
+        Update Account {{currentUser.email}}
+      </button>
+      <button ion-item (click)="deleteAcc()" *ngIf="currentUser">
+        Delete Account {{currentUser.email}}
+      </button>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>

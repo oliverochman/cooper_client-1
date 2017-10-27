@@ -116,6 +116,49 @@ export class MyApp {
     confirm.present();
   }
 
+  updatePopUp() {
+    console.log('popup');
+    let confirm = this.alertCtrl.create({
+      title: 'Update',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'email'
+        },
+        {
+          name: 'password',
+          placeholder: 'New password',
+          type: 'password'
+        },
+        {
+          name: 'password_confirmation',
+          placeholder: 'New password confirmation',
+          type: 'password'
+        },
+        {
+          name: 'password_current',
+          placeholder: 'Current Password',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Update',
+          handler: data => {
+            this.updateCreds(data);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
   login(credentials) {
     console.log(credentials)
     this._tokenService
@@ -130,6 +173,23 @@ export class MyApp {
     console.log(credentials);
     this._tokenService
       .registerAccount(credentials)
+      .subscribe(
+        res => (this.currentUser = res.json().data),
+        err => console.error('error')
+      );
+  }
+
+  deleteAcc() {
+    this._tokenService
+      .deleteAccount(this.currentUser)
+      .subscribe(res => console.log(res), err => console.error('error'));
+    this.currentUser = undefined;
+  }
+
+  updateCreds(credentials) {
+    console.log(credentials)
+    this._tokenService
+      .updatePassword(credentials)
       .subscribe(
         res => (this.currentUser = res.json().data),
         err => console.error('error')
