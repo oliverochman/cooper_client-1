@@ -181,7 +181,7 @@ export class MyApp {
 
   deleteAcc() {
     this._tokenService
-      .deleteAccount(this.currentUser)
+      .deleteAccount()
       .subscribe(res => console.log(res), err => console.error('error'));
     this.currentUser = undefined;
   }
