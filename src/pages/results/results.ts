@@ -12,6 +12,7 @@ export class ResultsPage {
   labels = [];
   data = [];
   doughnutChartType:string = 'doughnut';
+  radarChartType:string = 'radar';
   constructor(
     private performanceData: PerformanceDataProvider,
     public navCtrl: NavController,
