@@ -9,12 +9,14 @@
 
 
 <ion-content padding>
-  <ion-card  *ngFor="let result of results">
-    <ion-card-header>
-      {{result.created_at | date:'medium'}}
-    </ion-card-header>
-    <ion-card-content>
-      Result: {{result.data.message}}
-    </ion-card-content>
-  </ion-card>
+  <ion-card-header>Saved data</ion-card-header>
+  <div style="display: block">
+    <canvas baseChart
+            [data]="data"
+            [labels]="labels"
+            [chartType]="doughnutChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"
+            ></canvas>
+  </div>
 </ion-content>
