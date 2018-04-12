@@ -27,7 +27,7 @@ export class MyApp {
   ) {}
   ngOnInit(){
     this._tokenService.init({
-      apiBase: 'https://kmt-cooper-api.herokuapp.com/api/v1'
+      apiBase: 'http://localhost:3000/api'
     });
 
     this.initializeApp();
